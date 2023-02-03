@@ -20,7 +20,7 @@ export const fetchCartData = () => {
 
             const data = await response.json();
 
-            dispatch(cartActions.loadCart(data));
+            if (data) dispatch(cartActions.loadCart(data));
 
             // dispatch(
             //     uiActions.showNotification({
