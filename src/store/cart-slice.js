@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { uiActions } from './ui-slice';
 
-const initialState = { cartItems: [] };
+const initialState = { cartItems: [], firstLoad: true };
 
 const findItem = (cart, itemTitle) =>
     cart.findIndex(cartItem => cartItem.title === itemTitle);
@@ -11,8 +10,8 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         loadCart(state, action) {
-            console.log(action);
             state.cartItems = action.payload;
+            state.cartItems.firstLoad = true;
         },
         addItem(state, action) {
             const { title, price } = action.payload;

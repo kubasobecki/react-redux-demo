@@ -21,6 +21,8 @@ function App() {
             return;
         }
 
+        if (cartItems.firstLoad) return;
+
         dispatch(sendCartData(cartItems));
     }, [cartItems, dispatch]);
 

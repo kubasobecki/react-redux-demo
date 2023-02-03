@@ -4,13 +4,13 @@ import { cartActions } from './cart-slice';
 export const fetchCartData = () => {
     return async dispatch => {
         try {
-            dispatch(
-                uiActions.showNotification({
-                    status: 'pending',
-                    title: 'Loading',
-                    message: 'Loading cart data 🔁'
-                })
-            );
+            // dispatch(
+            //     uiActions.showNotification({
+            //         status: 'pending',
+            //         title: 'Loading',
+            //         message: 'Loading cart data 🔁'
+            //     })
+            // );
 
             const response = await fetch(
                 'https://udemy-react-http-e9a9c-default-rtdb.europe-west1.firebasedatabase.app/cart-items.json'
@@ -19,17 +19,16 @@ export const fetchCartData = () => {
             if (!response.ok) throw new Error('Fetching cart data failed 💩');
 
             const data = await response.json();
-            console.log(data);
 
             dispatch(cartActions.loadCart(data));
 
-            dispatch(
-                uiActions.showNotification({
-                    status: 'success',
-                    title: 'Success',
-                    message: 'Cart data loaded successfully 🥳'
-                })
-            );
+            // dispatch(
+            //     uiActions.showNotification({
+            //         status: 'success',
+            //         title: 'Success',
+            //         message: 'Cart data loaded successfully 🥳'
+            //     })
+            // );
         } catch (err) {
             console.dir(err);
             dispatch(
