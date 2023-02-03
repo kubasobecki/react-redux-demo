@@ -4,7 +4,7 @@ import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { sendCartData } from './store/cart-slice';
+import { fetchCartData, sendCartData } from './store/cart-actions';
 
 let initialRun = true;
 
@@ -17,6 +17,7 @@ function App() {
     useEffect(() => {
         if (initialRun) {
             initialRun = false;
+            dispatch(fetchCartData());
             return;
         }
 
